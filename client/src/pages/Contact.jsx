@@ -59,7 +59,7 @@ export default function Contact() {
               { label: "GitHub", value: "github.com/chirinbanum", href: "https://github.com/chirinbanum" },
               { label: "LeetCode", value: "Chirin_22CSR035", href: "https://leetcode.com/Chirin_22CSR035" },
             ].map(({ label, value, href }) => (
-              
+              <a
                 key={label}
                 href={href}
                 target="_blank"
