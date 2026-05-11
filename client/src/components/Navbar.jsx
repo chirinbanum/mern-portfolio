@@ -37,7 +37,6 @@ export default function Navbar() {
           CB<span className="text-white/20">.</span>
         </Link>
 
-        {/* Desktop */}
         <ul className="hidden md:flex items-center gap-8">
           {links.map(({ to, label }) => (
             <li key={to}>
@@ -56,14 +55,14 @@ export default function Navbar() {
         </ul>
 
         <a
-          href="/ChirinBanu_Resume.pdf"
-          download
+          href="https://drive.google.com/file/d/1N9ZFVEtn2PmOn53t40HSUJmQpigtrTPS/view?usp=sharing"
+          target="_blank"
+          rel="noreferrer"
           className="hidden md:inline-flex items-center gap-2 text-xs font-mono border border-teal-400/40 text-teal-400 px-4 py-2 rounded hover:bg-teal-400/10 transition-all duration-200"
         >
           Resume ↓
         </a>
 
-        {/* Mobile hamburger */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden flex flex-col gap-1.5 p-1"
@@ -75,7 +74,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {open && (
         <div className="md:hidden glass border-t border-white/5 px-6 py-4">
           <ul className="flex flex-col gap-4">
@@ -89,6 +87,16 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li>
+              <a
+                href="https://drive.google.com/file/d/1N9ZFVEtn2PmOn53t40HSUJmQpigtrTPS/view?usp=sharing"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-teal-400"
+              >
+                Resume ↓
+              </a>
+            </li>
           </ul>
         </div>
       )}
