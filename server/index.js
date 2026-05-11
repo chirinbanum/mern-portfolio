@@ -12,29 +12,8 @@ const PORT = process.env.PORT || 5000;
 // CORS configuration
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (Postman, curl, server-to-server)
-      if (!origin) return callback(null, true);
-
-      const allowedOrigins = [
-        "http://localhost:5173",
-        process.env.CLIENT_URL,
-      ];
-
-      // Allow exact matches
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-
-      // Allow all Vercel deployments and preview URLs
-      if (origin.endsWith(".vercel.app")) {
-        return callback(null, true);
-      }
-
-      return callback(new Error("Not allowed by CORS"));
-    },
+    origin: "*",
     methods: ["GET", "POST", "OPTIONS"],
-    credentials: true,
   })
 );
 
