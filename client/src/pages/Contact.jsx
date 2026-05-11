@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser";
 import SectionWrapper, { SectionHeading } from "../components/SectionWrapper";
 
 const SERVICE_ID = "service_t3gwff3";
-const TEMPLATE_ID = "template_fvqzorc";
+const TEMPLATE_ID = "fvqzorc";
 const PUBLIC_KEY = "4xDPHh-PqZFckrWiK";
 
 export default function Contact() {
