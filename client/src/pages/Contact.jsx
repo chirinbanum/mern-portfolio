@@ -28,7 +28,7 @@ export default function Contact() {
           from_email: form.email,
           message: form.message,
           to_name: "Chirin Banu",
-          title: `Message from ${form.name}`,
+          title: "Message from " + form.name,
         },
         PUBLIC_KEY
       );
@@ -43,7 +43,7 @@ export default function Contact() {
 
   return (
     <SectionWrapper className="pt-36">
-      <SectionHeading label="05 — Contact" title="Let's Talk" />
+      <SectionHeading label="05 - Contact" title="Let's Talk" />
 
       <div className="grid md:grid-cols-2 gap-16">
         <div>
@@ -67,7 +67,7 @@ export default function Contact() {
                 className="flex items-center justify-between border border-white/8 rounded-xl px-5 py-4 hover:border-teal-400/30 hover:bg-teal-400/5 transition-all duration-200 group"
               >
                 <span className="font-mono text-xs text-white/30 uppercase tracking-wider">{label}</span>
-                <span className="text-white/60 text-sm group-hover:text-teal-400 transition-colors">{value} ↗</span>
+                <span className="text-white/60 text-sm group-hover:text-teal-400 transition-colors">{value}</span>
               </a>
             ))}
           </div>
@@ -76,7 +76,7 @@ export default function Contact() {
         <div>
           {status === "success" ? (
             <div className="border border-teal-400/30 bg-teal-400/5 rounded-2xl p-10 text-center">
-              <p className="text-4xl mb-4">✉️</p>
+              <p className="text-4xl mb-4">Email Sent!</p>
               <h3 className="font-display text-white text-2xl font-bold mb-2">Message sent!</h3>
               <p className="text-white/50 text-sm">I'll get back to you soon.</p>
               <button
@@ -132,7 +132,7 @@ export default function Contact() {
                 disabled={status === "loading"}
                 className="w-full bg-teal-400 text-surface-900 font-mono font-medium text-sm py-4 rounded-xl hover:bg-teal-500 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {status === "loading" ? "Sending..." : "Send Message →"}
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
