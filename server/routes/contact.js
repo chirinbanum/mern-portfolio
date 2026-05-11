@@ -27,30 +27,33 @@ router.post("/", async (req, res) => {
     const contact = new Contact({ name, email, message });
     await contact.save();
 
-    // Email to you
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "chirinbanu2004@gmail.com",
-      subject: `New Portfolio Message from ${name}`,
-      html: `
-        <h2>New message from your portfolio!</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-    });
+    // Try email — don't crash if it fails
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: "chirinbanu2004@gmail.com",
+        subject: `New Portfolio Message from ${name}`,
+        html: `
+          <h2>New message from your portfolio!</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong> ${message}</p>
+        `,
+      });
 
-    // Confirmation to sender
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: "Thanks for reaching out!",
-      html: `
-        <h2>Hi ${name}! 👋</h2>
-        <p>Thanks for your message. I'll get back to you shortly.</p>
-        <p>— Chirin Banu M</p>
-      `,
-    });
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: "Thanks for reaching out!",
+        html: `
+          <h2>Hi ${name}! 👋</h2>
+          <p>Thanks for your message. I'll get back to you shortly.</p>
+          <p>— Chirin Banu M</p>
+        `,
+      });
+    } catch (emailErr) {
+      console.error("Email error:", emailErr.message);
+    }
 
     res.status(201).json({ success: true, message: "Message sent successfully." });
   } catch (err) {
