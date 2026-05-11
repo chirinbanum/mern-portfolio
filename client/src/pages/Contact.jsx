@@ -1,11 +1,14 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import SectionWrapper, { SectionHeading } from "../components/SectionWrapper";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+const SERVICE_ID = "service_t3gwff3";
+const TEMPLATE_ID = "template_fvqzorc";
+const PUBLIC_KEY = "4xDPHh-PqZFckrWiK";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
 
   const handleChange = (e) =>
@@ -15,16 +18,23 @@ export default function Contact() {
     e.preventDefault();
     setStatus("loading");
     setError("");
+
     try {
-      const res = await fetch(`${BACKEND_URL}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("Server error");
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          title: `Message from ${form.name}`,
+        },
+        PUBLIC_KEY
+      );
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
+      console.error("EmailJS error:", err);
       setStatus("error");
       setError("Something went wrong. Please email me directly.");
     }
