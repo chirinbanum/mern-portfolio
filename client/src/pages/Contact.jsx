@@ -24,9 +24,10 @@ export default function Contact() {
         SERVICE_ID,
         TEMPLATE_ID,
         {
-          name: form.name,
-          email: form.email,
+          from_name: form.name,
+          from_email: form.email,
           message: form.message,
+          to_name: "Chirin Banu",
           title: `Message from ${form.name}`,
         },
         PUBLIC_KEY
@@ -45,7 +46,6 @@ export default function Contact() {
       <SectionHeading label="05 — Contact" title="Let's Talk" />
 
       <div className="grid md:grid-cols-2 gap-16">
-        {/* Left info */}
         <div>
           <p className="text-white/60 text-lg leading-relaxed mb-10">
             I'm open to internships, full-time roles, research collaborations,
@@ -59,7 +59,7 @@ export default function Contact() {
               { label: "GitHub", value: "github.com/chirinbanum", href: "https://github.com/chirinbanum" },
               { label: "LeetCode", value: "Chirin_22CSR035", href: "https://leetcode.com/Chirin_22CSR035" },
             ].map(({ label, value, href }) => (
-              <a
+              
                 key={label}
                 href={href}
                 target="_blank"
@@ -73,7 +73,6 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Right form */}
         <div>
           {status === "success" ? (
             <div className="border border-teal-400/30 bg-teal-400/5 rounded-2xl p-10 text-center">
