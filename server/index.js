@@ -11,10 +11,14 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: [
+    "http://localhost:5173",
+    "https://mern-portfolio-three-bay.vercel.app",
+    /\.vercel\.app$/
+  ],
   methods: ["GET", "POST"],
 }));
-app.use(express.json());
+
 
 // Routes
 app.use("/api/contact", contactRoutes);
