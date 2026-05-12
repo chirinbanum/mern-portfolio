@@ -3,6 +3,18 @@ import SectionWrapper, { SectionHeading } from "../components/SectionWrapper";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
+const contacts = [
+  { label: "Email", value: "chirinbanu2004@gmail.com", href: "https://mail.google.com/mail/?view=cm&to=chirinbanu2004@gmail.com" },
+  { label: "Phone", value: "+91 8148394565", href: "tel:+918148394565" },
+  { label: "GitHub", value: "github.com/chirinbanum", href: "https://github.com/chirinbanum" },
+  { label: "LeetCode", value: "Chirin_22CSR035", href: "https://leetcode.com/Chirin_22CSR035" },
+];
+
+const fields = [
+  { name: "name", label: "Your Name", type: "text", placeholder: "Ada Lovelace" },
+  { name: "email", label: "Email Address", type: "email", placeholder: "ada@example.com" },
+];
+
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
@@ -30,18 +42,6 @@ export default function Contact() {
     }
   };
 
-  const contacts = [
-    { label: "Email", value: "chirinbanu2004@gmail.com", href: "mailto:chirinbanu2004@gmail.com" },
-    { label: "Phone", value: "+91 8148394565", href: "tel:+918148394565" },
-    { label: "GitHub", value: "github.com/chirinbanum", href: "https://github.com/chirinbanum" },
-    { label: "LeetCode", value: "Chirin_22CSR035", href: "https://leetcode.com/Chirin_22CSR035" },
-  ];
-
-  const fields = [
-    { name: "name", label: "Your Name", type: "text", placeholder: "Ada Lovelace" },
-    { name: "email", label: "Email Address", type: "email", placeholder: "ada@example.com" },
-  ];
-
   return (
     <SectionWrapper className="pt-36">
       <SectionHeading label="05 - Contact" title="Let's Talk" />
@@ -49,7 +49,7 @@ export default function Contact() {
 
         <div>
           <p className="text-white/60 text-lg leading-relaxed mb-10">
-            I'm open to internships, full-time roles, research collaborations,
+            I am open to internships, full-time roles, research collaborations,
             and interesting side projects. Drop me a message!
           </p>
           <div className="space-y-4">
@@ -75,11 +75,11 @@ export default function Contact() {
         <div>
           {status === "success" ? (
             <div className="border border-teal-400/30 bg-teal-400/5 rounded-2xl p-10 text-center">
-              <p className="text-4xl mb-4">✉️</p>
+              <p className="text-4xl mb-4">Email Sent!</p>
               <h3 className="font-display text-white text-2xl font-bold mb-2">
                 Message sent!
               </h3>
-              <p className="text-white/50 text-sm">I'll get back to you soon.</p>
+              <p className="text-white/50 text-sm">I will get back to you soon.</p>
               <button
                 onClick={() => setStatus("idle")}
                 className="mt-6 font-mono text-sm text-teal-400 hover:underline"

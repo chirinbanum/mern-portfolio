@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="border-t border-white/5 py-8 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-white/30 text-sm font-mono">
-          © {new Date().getFullYear()} Chirin Banu M
+          {new Date().getFullYear()} Chirin Banu M
         </p>
         <div className="flex gap-6">
           <a
@@ -23,7 +23,9 @@ export default function Footer() {
             LeetCode
           </a>
           <a
-            href="mailto:chirinbanu2004@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&to=chirinbanu2004@gmail.com"
+            target="_blank"
+            rel="noreferrer"
             className="text-white/30 text-sm hover:text-teal-400 transition-colors"
           >
             Email
