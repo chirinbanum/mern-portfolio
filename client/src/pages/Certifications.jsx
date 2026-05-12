@@ -8,6 +8,8 @@ const certs = [
     description:
       "Validates proficiency in building modern applications with MongoDB, including data modeling, CRUD operations, aggregation pipelines, and indexing strategies.",
     icon: "🍃",
+    link:
+      "https://drive.google.com/file/d/1YCTdpkUB2CdVHzRJPSjMvm-A_wub0woW/view?usp=drive_link",
   },
   {
     title: "Edge Computing",
@@ -16,6 +18,8 @@ const certs = [
     description:
       "Completed with Elite certification (78/100). Covered edge computing architecture, distributed systems, and low-latency application deployment.",
     icon: "☁️",
+    link:
+      "https://drive.google.com/file/d/1MWjpdsfZZKxA8FZwwTVCvsqmSc1SNF1D/view?usp=drive_link",
   },
   {
     title: "Privacy and Security in Online Social Media",
@@ -24,6 +28,8 @@ const certs = [
     description:
       "Studied privacy risks, cyber threats, and security mechanisms used to protect users on online social platforms.",
     icon: "🔐",
+    link:
+      "https://drive.google.com/file/d/1oMf-ezaPgBBbpzukG2JsMCKfoA6Rlbrv/view?usp=drive_link",
   },
   {
     title: "Entrepreneurship",
@@ -32,6 +38,8 @@ const certs = [
     description:
       "Explored startup ideation, innovation, business models, and entrepreneurial thinking.",
     icon: "🚀",
+    link:
+      "https://drive.google.com/file/d/15lohywkdKd6YGFPmaS-Xtj0fYuCrX716/view?usp=drive_link",
   },
   {
     title: "Principles of Management",
@@ -40,6 +48,8 @@ const certs = [
     description:
       "Learned core management concepts including planning, organizing, leadership, and decision-making.",
     icon: "📊",
+    link:
+      "https://drive.google.com/file/d/1RJ8V0NwlckwfKWfTGtXoojt-V8QTtGuZ/view?usp=drive_link",
   },
 ];
 
@@ -52,6 +62,9 @@ const publications = [
     description:
       "Research on using Conditional Tabular GAN (CTGAN) for synthetic data augmentation combined with Autoencoder-based feature extraction to improve heart disease prediction accuracy.",
     icon: "📄",
+    paperLink: "https://ieeexplore.ieee.org/document/11378067",
+    certificateLink:
+      "https://drive.google.com/file/d/1kDDZvLIB7YPPTU7LYPrqh2CQ3k_9Z_pO/view?usp=sharing",
   },
 ];
 
@@ -92,6 +105,17 @@ export default function Certifications() {
               <p className="text-white/50 text-sm leading-relaxed">
                 {c.description}
               </p>
+
+              {c.link && (
+                <a
+                  href={c.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex mt-4 items-center gap-2 font-mono text-xs bg-teal-400/10 text-teal-400 px-3 py-1.5 rounded-full hover:bg-teal-400/20 transition-all duration-300"
+                >
+                  View Certificate ↗
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -130,6 +154,30 @@ export default function Certifications() {
               <span className="inline-flex mt-4 font-mono text-xs bg-purple-400/10 text-purple-400 px-3 py-1 rounded-full">
                 Peer Reviewed · IEEE
               </span>
+
+              <div className="flex flex-wrap gap-3 mt-4">
+                {p.paperLink && (
+                  <a
+                    href={p.paperLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-mono text-xs bg-purple-400/10 text-purple-400 px-3 py-1.5 rounded-full hover:bg-purple-400/20 transition-all duration-300"
+                  >
+                    View Paper ↗
+                  </a>
+                )}
+
+                {p.certificateLink && (
+                  <a
+                    href={p.certificateLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-mono text-xs bg-purple-400/10 text-purple-400 px-3 py-1.5 rounded-full hover:bg-purple-400/20 transition-all duration-300"
+                  >
+                    View Certificate ↗
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>

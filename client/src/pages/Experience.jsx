@@ -12,6 +12,8 @@ const experiences = [
       "Collaborated effectively with team members to complete tasks within deadlines.",
     ],
     tech: ["HTML", "CSS", "JavaScript", "React"],
+    certificate:
+      "https://drive.google.com/file/d/1iVVDq7yI76C9iOEM1iOsIQ_lcqioyioY/view?usp=drive_link",
   },
 ];
 
@@ -27,6 +29,8 @@ const inplantTrainings = [
       "Gained exposure to production processes and organizational practices.",
     ],
     tech: ["Industrial Training", "Workflow Management"],
+    certificate:
+      "https://drive.google.com/file/d/1dNvFxhdGUl00t0r8A4nawoReUQDethkv/view?usp=drive_link",
   },
   {
     role: "In-Plant Trainee",
@@ -39,8 +43,66 @@ const inplantTrainings = [
       "Strengthened problem-solving skills through real-time assignments.",
     ],
     tech: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
+    certificate:
+      "https://drive.google.com/file/d/1FglkksN_-zAZ3bH9f90HjDLEW8vAdrJ2/view?usp=drive_link",
   },
 ];
+
+function ExperienceCard({ item }) {
+  return (
+    <div className="border border-white/8 rounded-2xl p-8 bg-surface-800/30 hover:border-teal-400/20 transition-all duration-300">
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+        <div>
+          <h3 className="font-display text-white font-bold text-2xl mb-1">
+            {item.role}
+          </h3>
+          <p className="text-teal-400 font-mono text-sm">{item.company}</p>
+        </div>
+
+        <div className="text-right">
+          <p className="font-mono text-white/40 text-sm">{item.duration}</p>
+          <p className="font-mono text-white/30 text-xs mt-1">
+            {item.location}
+          </p>
+        </div>
+      </div>
+
+      <ul className="space-y-3 mb-6">
+        {item.points.map((point, index) => (
+          <li
+            key={index}
+            className="flex gap-3 text-white/60 text-sm leading-relaxed"
+          >
+            <span className="text-teal-400 mt-0.5 flex-shrink-0">▹</span>
+            {point}
+          </li>
+        ))}
+      </ul>
+
+      <div className="flex flex-wrap gap-2 mb-6">
+        {item.tech.map((tech) => (
+          <span
+            key={tech}
+            className="font-mono text-xs bg-teal-400/10 text-teal-400/80 px-3 py-1 rounded-full"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      {item.certificate && (
+        <a
+          href={item.certificate}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 font-mono text-xs bg-teal-400/10 text-teal-400 px-3 py-1.5 rounded-full hover:bg-teal-400/20 transition-all duration-300"
+        >
+          View Certificate ↗
+        </a>
+      )}
+    </div>
+  );
+}
 
 export default function Experience() {
   return (
@@ -49,54 +111,8 @@ export default function Experience() {
 
       {/* Internship Experience */}
       <div className="space-y-8">
-        {experiences.map((exp, i) => (
-          <div
-            key={i}
-            className="border border-white/8 rounded-2xl p-8 bg-surface-800/30 hover:border-teal-400/20 transition-all duration-300"
-          >
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-              <div>
-                <h3 className="font-display text-white font-bold text-2xl mb-1">
-                  {exp.role}
-                </h3>
-                <p className="text-teal-400 font-mono text-sm">{exp.company}</p>
-              </div>
-
-              <div className="text-right">
-                <p className="font-mono text-white/40 text-sm">
-                  {exp.duration}
-                </p>
-                <p className="font-mono text-white/30 text-xs mt-1">
-                  {exp.location}
-                </p>
-              </div>
-            </div>
-
-            <ul className="space-y-3 mb-6">
-              {exp.points.map((point, j) => (
-                <li
-                  key={j}
-                  className="flex gap-3 text-white/60 text-sm leading-relaxed"
-                >
-                  <span className="text-teal-400 mt-0.5 flex-shrink-0">
-                    ▹
-                  </span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex flex-wrap gap-2">
-              {exp.tech.map((t) => (
-                <span
-                  key={t}
-                  className="font-mono text-xs bg-teal-400/10 text-teal-400/80 px-3 py-1 rounded-full"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
+        {experiences.map((exp, index) => (
+          <ExperienceCard key={index} item={exp} />
         ))}
       </div>
 
@@ -107,56 +123,8 @@ export default function Experience() {
         </p>
 
         <div className="space-y-8">
-          {inplantTrainings.map((training, i) => (
-            <div
-              key={i}
-              className="border border-white/8 rounded-2xl p-8 bg-surface-800/30 hover:border-teal-400/20 transition-all duration-300"
-            >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                <div>
-                  <h3 className="font-display text-white font-bold text-2xl mb-1">
-                    {training.role}
-                  </h3>
-                  <p className="text-teal-400 font-mono text-sm">
-                    {training.company}
-                  </p>
-                </div>
-
-                <div className="text-right">
-                  <p className="font-mono text-white/40 text-sm">
-                    {training.duration}
-                  </p>
-                  <p className="font-mono text-white/30 text-xs mt-1">
-                    {training.location}
-                  </p>
-                </div>
-              </div>
-
-              <ul className="space-y-3 mb-6">
-                {training.points.map((point, j) => (
-                  <li
-                    key={j}
-                    className="flex gap-3 text-white/60 text-sm leading-relaxed"
-                  >
-                    <span className="text-teal-400 mt-0.5 flex-shrink-0">
-                      ▹
-                    </span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="flex flex-wrap gap-2">
-                {training.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-xs bg-teal-400/10 text-teal-400/80 px-3 py-1 rounded-full"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
+          {inplantTrainings.map((training, index) => (
+            <ExperienceCard key={index} item={training} />
           ))}
         </div>
       </div>
