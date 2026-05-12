@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
     const contact = new Contact({ name, email, message });
     await contact.save();
 
-    // Send email using Resend
+    // Send email to you
     try {
       await resend.emails.send({
         from: "onboarding@resend.dev",
@@ -34,7 +34,29 @@ router.post("/", async (req, res) => {
         `,
       });
     } catch (emailErr) {
-      console.error("Email error:", emailErr.message);
+      console.error("Notification email error:", emailErr.message);
+    }
+
+    // Send thank you email to visitor
+    try {
+      await resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: "chirinbanu2004@gmail.com",
+        subject: `Thank you ${name} for reaching out!`,
+        html: `
+          <h2>Hi ${name}!</h2>
+          <p>Thank you for reaching out. I have received your message and will get back to you as soon as possible.</p>
+          <br/>
+          <p>Here's a copy of your message:</p>
+          <p><em>${message}</em></p>
+          <br/>
+          <p>Best regards,</p>
+          <p><strong>Chirin Banu M</strong></p>
+          <p>Software Developer</p>
+        `,
+      });
+    } catch (emailErr) {
+      console.error("Thank you email error:", emailErr.message);
     }
 
     res.status(201).json({ success: true, message: "Message sent successfully." });
