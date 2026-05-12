@@ -1,21 +1,12 @@
 import express from "express";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import dotenv from "dotenv";
 import Contact from "../models/Contact.js";
 
 dotenv.config();
 
 const router = express.Router();
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.post("/", async (req, res) => {
   try {
@@ -29,10 +20,10 @@ router.post("/", async (req, res) => {
     const contact = new Contact({ name, email, message });
     await contact.save();
 
-    // Try email — don't crash if it fails
+    // Send email using Resend
     try {
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
+      await resend.emails.send({
+        from: "onboarding@resend.dev",
         to: "chirinbanu2004@gmail.com",
         subject: `New Portfolio Message from ${name}`,
         html: `
@@ -43,12 +34,12 @@ router.post("/", async (req, res) => {
         `,
       });
 
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
+      await resend.emails.send({
+        from: "onboarding@resend.dev",
         to: email,
         subject: "Thanks for reaching out!",
         html: `
-          <h2>Hi ${name}! 👋</h2>
+          <h2>Hi ${name}!</h2>
           <p>Thanks for your message. I'll get back to you shortly.</p>
           <p>— Chirin Banu M</p>
         `,
