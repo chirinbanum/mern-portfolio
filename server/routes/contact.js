@@ -33,17 +33,6 @@ router.post("/", async (req, res) => {
           <p><strong>Message:</strong> ${message}</p>
         `,
       });
-
-      await resend.emails.send({
-        from: "onboarding@resend.dev",
-        to: email,
-        subject: "Thanks for reaching out!",
-        html: `
-          <h2>Hi ${name}!</h2>
-          <p>Thanks for your message. I'll get back to you shortly.</p>
-          <p>— Chirin Banu M</p>
-        `,
-      });
     } catch (emailErr) {
       console.error("Email error:", emailErr.message);
     }
