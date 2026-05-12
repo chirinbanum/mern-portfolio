@@ -33,8 +33,11 @@ const education = [
 const achievements = [
   "🥇 First Prize — Ideathon2k23 (Soundless Horn Project)",
   "⚡ Participated in 24-hour Hackathon Hackbuzz24",
+  "📄 Presented a Paper at Tecblaze 2K24, SRM Institute of Science and Technology, Chennai",
   "🏆 CSE Outstanding Sports Achiever 2023–24",
+  "🥇 Secured First Prize — Anna University Zonal Tournament 2023–24",
   "📖 Member, Computer Society of India (CSI)",
+
 ];
 
 export default function About() {
