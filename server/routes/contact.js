@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
     const contact = new Contact({ name, email, message });
     await contact.save();
 
-    // Send email to you
+    // Send notification email to you
     try {
       await resend.emails.send({
         from: "onboarding@resend.dev",
@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
     try {
       await resend.emails.send({
         from: "onboarding@resend.dev",
-        to: "chirinbanu2004@gmail.com",
+        to: email,
         subject: `Thank you ${name} for reaching out!`,
         html: `
           <h2>Hi ${name}!</h2>
